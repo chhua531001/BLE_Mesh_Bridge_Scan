@@ -88,7 +88,7 @@ public class WriteDataActivity extends AppCompatActivity {
     ArrayList<Transaction> warningMessage = new ArrayList<>();
     DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
-    boolean writeLogFile = true;
+    boolean writeLogFile = false;
     boolean sendInquireCommand = false;
 
     ArrayList<HashMap<String,String>> inquireResponse = new ArrayList<HashMap<String,String>>();
