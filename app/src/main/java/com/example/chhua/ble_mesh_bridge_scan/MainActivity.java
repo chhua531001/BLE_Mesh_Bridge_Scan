@@ -81,7 +81,7 @@ public class MainActivity extends AppCompatActivity {
     Context mContext = this;
     Activity currentActivity = this;
     boolean btn4Scan = true;
-    boolean writeLogFile = false;
+    boolean writeLogFile = true;
 
     String Device = "Device";
     String DeviceID = "DeviceID";
