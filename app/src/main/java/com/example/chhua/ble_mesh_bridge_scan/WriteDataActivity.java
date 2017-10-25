@@ -88,7 +88,7 @@ public class WriteDataActivity extends AppCompatActivity {
     ArrayList<Transaction> warningMessage = new ArrayList<>();
     DateFormat formatter = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
 
-    boolean writeLogFile = false;
+    boolean writeLogFile = true;
     boolean sendInquireCommand = false;
 
     ArrayList<HashMap<String,String>> inquireResponse = new ArrayList<HashMap<String,String>>();
@@ -318,8 +318,8 @@ public class WriteDataActivity extends AppCompatActivity {
                     mReadCharacteristic = gattCharacteristic;
 
                     mBluetoothLeService.setCharacteristicNotification(mReadCharacteristic, true);
-                    tools.delayMS(400);
-                    writeData2BLE("0004");
+//                    tools.delayMS(400);
+//                    writeData2BLE("0004");
                 }
 
                 currentCharaData.put(
@@ -661,10 +661,10 @@ public class WriteDataActivity extends AppCompatActivity {
             mWriteCharacteristic.setWriteType(1);
             mBluetoothLeService.writeCharacteristic(mWriteCharacteristic);
 
-            if(!sendInquireCommand) {
-                tools.delayMS(400);
-                mBluetoothLeService.readCharacteristic(mReadCharacteristic);
-            }
+//            if(!sendInquireCommand) {
+//                tools.delayMS(400);
+//                mBluetoothLeService.readCharacteristic(mReadCharacteristic);
+//            }
 
 //            tools.delayMS(400);
 //
@@ -943,45 +943,45 @@ public class WriteDataActivity extends AppCompatActivity {
 
     public void javascriptCallFinished(final String json){
 
-//        Log.println(Log.VERBOSE, TAG,"MyActivity.javascriptCallFinished is called : "+json);
-//        if(broadcastAction) {
-//            warningMessage = tools.parseJSON(json);
-        Log.println(Log.VERBOSE, TAG,"javascriptCallFinished is called : " + json);
-        if(writeLogFile) {
-            tools.appendLog("javascriptCallFinished is called : " + json);
-        }
-        writeData2BLE(json);
-//            String dateTimeString = tools.timeStampMS2dateTimeString(warningMessage.get(0).timestamp * 1000L);
-////        Toast.makeText(this, "收到的訊息內容 :\n\n " + warningMessage.get(0).priority + "\n" + warningMessage.get(0).type + "\n"
-////                + warningMessage.get(0).subject + "\n" + warningMessage.get(0).detail + "\n" + dateTimeString, Toast.LENGTH_SHORT).show();
-//
-//            //  Send Broadcast Action
-////        int nextRandomNumber = mRandom.nextInt(100);
-//            // Initialize a new Intent object
-//
-//
-//            Log.println(Log.VERBOSE, TAG,"MyActivity.javascriptCallFinished is called : 1 " + json);
-//            Intent intent = new Intent();
-//            // Set an action for the Intent
-//            intent.setAction("WARNING_MESSAGE_INTENT");
-//            // Put an integer value Intent to broadcast it
-////        intent.putExtra("RandomNumber",nextRandomNumber);
-////        intent.putExtra("priority", warningMessage.get(0).priority);
-//            String[] warningMsg = {warningMessage.get(0).priority, warningMessage.get(0).type, warningMessage.get(0).subject,
-//                    warningMessage.get(0).detail, dateTimeString};
-//            intent.putExtra("warningMsg", warningMsg);
-//            sendBroadcast(intent);
+////        Log.println(Log.VERBOSE, TAG,"MyActivity.javascriptCallFinished is called : "+json);
+////        if(broadcastAction) {
+////            warningMessage = tools.parseJSON(json);
+//        Log.println(Log.VERBOSE, TAG,"javascriptCallFinished is called : " + json);
+//        if(writeLogFile) {
+//            tools.appendLog("javascriptCallFinished is called : " + json);
 //        }
-
-//        Log.d("mylog", "Date  : " + dateTime);
-
-        // I need to run set operation of UI on the main thread.
-        // therefore, the above parameter "val" must be final
-//        runOnUiThread(new Runnable() {
-//            public void run() {
-//                myResultView.setText("Callback got val: " + json);
-//            }
-//        });
+//        writeData2BLE(json);
+////            String dateTimeString = tools.timeStampMS2dateTimeString(warningMessage.get(0).timestamp * 1000L);
+//////        Toast.makeText(this, "收到的訊息內容 :\n\n " + warningMessage.get(0).priority + "\n" + warningMessage.get(0).type + "\n"
+//////                + warningMessage.get(0).subject + "\n" + warningMessage.get(0).detail + "\n" + dateTimeString, Toast.LENGTH_SHORT).show();
+////
+////            //  Send Broadcast Action
+//////        int nextRandomNumber = mRandom.nextInt(100);
+////            // Initialize a new Intent object
+////
+////
+////            Log.println(Log.VERBOSE, TAG,"MyActivity.javascriptCallFinished is called : 1 " + json);
+////            Intent intent = new Intent();
+////            // Set an action for the Intent
+////            intent.setAction("WARNING_MESSAGE_INTENT");
+////            // Put an integer value Intent to broadcast it
+//////        intent.putExtra("RandomNumber",nextRandomNumber);
+//////        intent.putExtra("priority", warningMessage.get(0).priority);
+////            String[] warningMsg = {warningMessage.get(0).priority, warningMessage.get(0).type, warningMessage.get(0).subject,
+////                    warningMessage.get(0).detail, dateTimeString};
+////            intent.putExtra("warningMsg", warningMsg);
+////            sendBroadcast(intent);
+////        }
+//
+////        Log.d("mylog", "Date  : " + dateTime);
+//
+//        // I need to run set operation of UI on the main thread.
+//        // therefore, the above parameter "val" must be final
+////        runOnUiThread(new Runnable() {
+////            public void run() {
+////                myResultView.setText("Callback got val: " + json);
+////            }
+////        });
     }
 
     void doBackReturn() {
