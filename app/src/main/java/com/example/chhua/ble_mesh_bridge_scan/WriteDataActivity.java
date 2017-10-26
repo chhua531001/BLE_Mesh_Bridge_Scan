@@ -95,6 +95,7 @@ public class WriteDataActivity extends AppCompatActivity {
     String BorardParameter = "item";
 
     boolean back2MainActivity = true;
+    String postResult = "";
 
     // Code to manage Service lifecycle.
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -842,7 +843,7 @@ public class WriteDataActivity extends AppCompatActivity {
         }
 
         String url =  "http://vorder.net/demo/app_command.php";
-        final String postResult = tools.sendPostCoomad(url, test1.toString());
+        postResult = tools.sendPostCoomad(url, test1.toString());
 
 //        OkHttpPostHandler locationTask = new OkHttpPostHandler();
 //        String url =  "http://vorder.net/demo/app_command.php";
@@ -887,8 +888,14 @@ public class WriteDataActivity extends AppCompatActivity {
             //Waiting Webview Page Loading Finish
             public void onPageFinished(WebView view, String url) {
                 // do your stuff here
-                Log.println(Log.INFO, TAG, "postResult Data : "+postResult);
-                mWebView.loadUrl("javascript: display(" + postResult + ");");
+                Log.println(Log.INFO, TAG, "onPageFinished");
+                Log.println(Log.DEBUG, TAG, "postResult Data : "+postResult);
+
+                if(!postResult.isEmpty()) {
+                    mWebView.loadUrl("javascript: display(" + postResult + ");");
+                    postResult = "";
+                }
+
             }
         });
 
