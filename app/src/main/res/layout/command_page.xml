@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:focusable="true"
     android:focusableInTouchMode="true"
-    tools:context=".MainActivity">
+    tools:context=".WriteDataActivity">
 
     <!--要讓EditText不要一開始就focus, 就在Layout上使用以下的兩項設定-->
     <!--android:focusable="true"-->

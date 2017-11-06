@@ -5,7 +5,9 @@ import android.graphics.Typeface;
 import android.graphics.drawable.GradientDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
+import android.util.DisplayMetrics;
 import android.util.Log;
+import android.util.Pair;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -557,6 +559,58 @@ public class Tools {
 
         Log.println(Log.INFO, targetID, "asyncResult Data : " + asyncResult);
         return asyncResult;
+    }
+
+    public Pair<Integer,Integer> getDisplayParameter(Context curContext) {
+
+        DisplayMetrics dm = curContext.getResources().getDisplayMetrics();
+/*
+        double x = Math.pow(dm.widthPixels/dm.xdpi,2);
+        double y = Math.pow(dm.heightPixels / dm.ydpi, 2);
+        double screenInches = Math.sqrt(x + y);
+        System.out.println("xxx : " + x);
+        System.out.println("yyy : " + y);
+        System.out.println("widthPixels : " + dm.widthPixels);
+        System.out.println("heightPixels : " + dm.heightPixels);
+        System.out.println("xdpi : " + dm.xdpi);
+        System.out.println("ydpi : " + dm.ydpi);
+        System.out.println("Screen inches : " + screenInches);
+*/
+
+        return new Pair<Integer,Integer> (dm.widthPixels, dm.heightPixels);
+    }
+
+    /**
+     * Covert dp to px
+     * @param dp
+     * @param context
+     * @return pixel
+     */
+    public static float convertDpToPixel(float dp, Context context){
+        float px = dp * getDensity(context);
+        return px;
+    }
+    /**
+     * Covert px to dp
+     * @param px
+     * @param context
+     * @return dp
+     */
+    public static float convertPixelToDp(float px, Context context){
+        float dp = px / getDensity(context);
+        return dp;
+    }
+    /**
+     * 取得螢幕密度
+     * 120dpi = 0.75
+     * 160dpi = 1 (default)
+     * 240dpi = 1.5
+     * @param context
+     * @return
+     */
+    public static float getDensity(Context context){
+        DisplayMetrics metrics = context.getResources().getDisplayMetrics();
+        return metrics.density;
     }
 
 

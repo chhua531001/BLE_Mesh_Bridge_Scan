@@ -25,6 +25,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
+import android.util.Pair;
 import android.view.View;
 import android.webkit.SslErrorHandler;
 import android.webkit.WebChromeClient;
@@ -96,6 +97,8 @@ public class WriteDataActivity extends AppCompatActivity {
 
     boolean back2MainActivity = true;
     String postResult = "";
+
+    float textSizeDp;
 
     // Code to manage Service lifecycle.
     private final ServiceConnection mServiceConnection = new ServiceConnection() {
@@ -443,6 +446,20 @@ public class WriteDataActivity extends AppCompatActivity {
         android.support.v7.app.ActionBar m_myActionBar = getSupportActionBar();
         m_myActionBar.hide();
 
+        Pair<Integer, Integer> tempPixels = tools.getDisplayParameter(getApplicationContext());
+
+        int wPixels = tempPixels.first;
+        int hPixels = tempPixels.second;
+//        int hPixels = tempPixels.second;
+        System.out.println("wwwidthPixels : " + wPixels);
+
+        int textSize = (hPixels * 2) / 100;
+        textSizeDp = tools.convertPixelToDp(textSize, mContext);
+
+        System.out.println("textSizeDp : " + textSizeDp);
+
+
+
         Log.d(TAG, "WriteDataActivity onCreate");
         if(writeLogFile) {
             tools.appendLog("WriteDataActivity onCreate");
@@ -774,13 +791,19 @@ public class WriteDataActivity extends AppCompatActivity {
         }
 //        tools.appendLog("command Click");
 
-        setContentView(R.layout.command_page);
+        setContentView(R.layout.new_command_page);
 
         textViewState = (TextView)findViewById(R.id.cconnectStatus);
         outputData = (EditText) findViewById(R.id.writeData);
         sendData = (Button) findViewById(R.id.sendButton);
         reconnect = (Button) findViewById(R.id.creconnect);
+        Button backRet = (Button) findViewById(R.id.backReturnButton);
+        Button rescanBtn = (Button) findViewById(R.id.rescanButton);
         back2MainActivity = false;
+
+        reconnect.setTextSize(textSizeDp);
+        backRet.setTextSize(textSizeDp);
+        rescanBtn.setTextSize(textSizeDp);
 
         if(mConnected) {
             textViewState.setText("CONNECTED");
@@ -802,11 +825,17 @@ public class WriteDataActivity extends AppCompatActivity {
         }
 //        tools.appendLog("Webview Click");
 
-        setContentView(R.layout.webview_page);
+        setContentView(R.layout.new_webview_page);
 
         textViewState = (TextView)findViewById(R.id.wconnectStatus);
         reconnect = (Button) findViewById(R.id.wreconnect);
+        Button backRet = (Button) findViewById(R.id.backReturnButton);
+        Button rescanBtn = (Button) findViewById(R.id.rescanButton);
         back2MainActivity = false;
+
+        reconnect.setTextSize(textSizeDp);
+        backRet.setTextSize(textSizeDp);
+        rescanBtn.setTextSize(textSizeDp);
 
         if(mConnected) {
             textViewState.setText("CONNECTED");
