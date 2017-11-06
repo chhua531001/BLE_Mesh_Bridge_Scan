@@ -47,7 +47,7 @@
                 android:minWidth="0dp"
                 android:onClick="backReturnClick"
                 android:padding="0dp"
-                android:text="回到功能頁"/>
+                android:text="功能頁"/>
 
             <TextView
                 android:id="@+id/textView"
@@ -72,7 +72,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="reconnectClick"
-                android:text="重新連接藍芽"
+                android:text="連藍芽"
                 android:theme="@android:style/Theme.Black.NoTitleBar"
                 android:visibility="invisible" />
 
@@ -85,7 +85,7 @@
                 android:layout_weight="1"
                 android:onClick="rescanClick"
                 android:theme="@android:style/Theme.Black.NoTitleBar"
-                android:text="重新掃描藍芽" />
+                android:text="掃藍芽" />
 
         </LinearLayout>
     </android.support.constraint.ConstraintLayout>

@@ -73,7 +73,7 @@
                 android:layout_weight="1"
                 android:onClick="backReturnClick"
                 android:textSize="45px"
-                android:text="回到功能頁"/>
+                android:text="功能頁"/>
 
             <Button
                 android:id="@+id/creconnect"
@@ -81,7 +81,7 @@
                 android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:onClick="reconnectClick"
-                android:text="重新連接藍芽"
+                android:text="連藍芽"
                 android:textSize="45px"
                 android:visibility="invisible" />
 
@@ -92,7 +92,7 @@
                 android:layout_weight="1"
                 android:onClick="rescanClick"
                 android:textSize="45px"
-                android:text="重新掃描藍芽" />
+                android:text="掃藍芽" />
 
         </LinearLayout>
 
